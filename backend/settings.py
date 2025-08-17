@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/p
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-e&8aow7-3zkqyuhtkqas5q+$5*qp__&^8-p8)hpihru)ag2^#8"
+SECRET_KEY = "django-insecure-e&8aow7-3zdfgdkflgnmsg5*qp__&^8-p8)hpihru)ag2^#8"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -43,18 +43,12 @@ CORS_ALLOW_HEADERS = [
 ]
 
 ALLOWED_HOSTS = [
-    "*",
-     "bodjeh.tabriziau.ac.ir",
-     "192.168.0.88:3000",
-     "192.168.0.88:8000",
+    "*",     
 ]
 
 CORS_ORIGIN_WHITELIST = [
-    # "*",
-    "http://bodjeh.tabriziau.ac.ir",
-    "http://localhost:3001",
-    "http://172.16.10.50:3001",
-    "http://172.16.10.50:8000",
+    "*",    
+    "http://localhost:3001",    
 ]
 
 # Application definition
@@ -159,28 +153,15 @@ REST_FRAMEWORK = {
         # 'rest_framework.permissions.IsAuthenticated',
     ],
 }
-SIMPLE_JWT = {
-    "AUTH_HEADER_TYPES": ("Bearer",),
-    "ACCESS_TOKEN_LIFETIME": datetime.timedelta(days=1),
-    "REFRESH_TOKEN_LIFETIME": datetime.timedelta(days=30),
-    "UPDATE_LAST_LOGIN": True,
-}
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-DJOSER = {
-    "PASSWORD_RESET_CONFIRM_URL": "auth/password/reset-password-confirmation/?uid={uid}&token={token}",
-    "ACTIVATION_URL": "#/activate/{uid}/{token}",
-    "SEND_ACTIVATION_EMAIL": False,
-    "SERIALIZERS": {},
-}
+
 SITE_NAME = "تدبیر بودجه"
-DOMAIN = "bodjeh.tabriziau.ac.ir"
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'tadbir',          # The database you imported
+        'NAME': 'user',          # The database you imported
         'USER': 'root',            # Your MySQL username
-        'PASSWORD': '1234',        # Replace with your MySQL root password
+        'PASSWORD': '9876',        # Replace with your MySQL root password
         'HOST': '127.0.0.1',       # Or the server address (e.g., 192.168.0.88)
         'PORT': '3306',            # Default MySQL port
     }
