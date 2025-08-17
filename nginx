@@ -1,0 +1,130 @@
+server {
+    listen 80;
+    server_name 5.160.137.171 192.168.0.88 bodjeh.tabriziau.ac.ir;
+
+    location / {
+        proxy_pass http://localhost:3000; # Next.js app
+   #  root /home/rashidi/frontend/out/;
+    #   try_files $uri $uri.html $uri/ =404;
+    }
+
+
+    location /samples/ {
+    root /home/rashidi/frontend/public;
+    try_files $uri $uri/ =404;
+    }
+    
+    location /api/ {
+      include proxy_params;/group
+      proxy_pass http://unix:/home/rashidi/backend/backend.sock;
+    }
+    location /admin/ {
+      include proxy_params;
+      proxy_pass http://unix:/home/rashidi/backend/backend.sock;
+    }
+    location /auth/ {
+      include proxy_params;
+      proxy_pass http://unix:/home/rashidi/backend/backend.sock;
+    }
+
+    location /group/ {
+      include proxy_params;
+      proxy_pass http://unix:/home/rashidi/backend/backend.sock;
+    }
+
+    location /get_user_info/ {
+      include proxy_params;
+      proxy_pass http://unix:/home/rashidi/backend/backend.sock;
+    }
+
+    location /api-auth/ {
+      include proxy_params;
+      proxy_pass http://unix:/home/rashidi/backend/backend.sock;
+    }
+    location /mehdi/ {
+      include proxy_params;
+      proxy_pass http://unix:/home/rashidi/backend/backend.sock;
+    }
+
+
+
+
+
+
+
+
+
+    location /media/ {
+    alias /home/rashidi/backend/media/;
+    #   autoindex on; # Optional: to list files in the directory
+    }
+
+    location /static/ {
+        alias /home/rashidi/backend/staticfiles/; # This should match STATIC_ROOT
+        #   autoindex on; # Optional: to list files in the directory
+    }
+}
+
+server {
+    listen 443 ssl;
+    server_name 5.160.137.171 192.168.0.88 bodjeh.tabriziau.ac.ir;
+    ssl_certificate /home/rashidi/ssl/wildcard_tabriziau_ac_ir.crt; # Adjust the path to your SSL certificate
+    ssl_certificate_key /home/rashidi/ssl/wildcard_tabriziau_ac_ir.key; # Adjust the path to your SSL certificate key
+    location / {
+        proxy_pass http://localhost:3000; # Next.js app
+   #  root /home/rashidi/frontend/out/;
+    #   try_files $uri $uri.html $uri/ =404;
+    }
+
+
+
+    location /api/ {
+      include proxy_params;
+      proxy_pass http://unix:/home/rashidi/backend/backend.sock;
+    }
+    location /admin/ {
+      include proxy_params;
+      proxy_pass http://unix:/home/rashidi/backend/backend.sock;
+    }
+    location /auth/ {
+      include proxy_params;
+      proxy_pass http://unix:/home/rashidi/backend/backend.sock;
+    }
+
+    location /group/ {
+      include proxy_params;
+      proxy_pass http://unix:/home/rashidi/backend/backend.sock;
+    }
+
+    location /get_user_info/ {
+      include proxy_params;
+      proxy_pass http://unix:/home/rashidi/backend/backend.sock;
+    }
+
+    location /api-auth/ {
+      include proxy_params;
+      proxy_pass http://unix:/home/rashidi/backend/backend.sock;
+    }
+    location /mehdi/ {
+      include proxy_params;
+      proxy_pass http://unix:/home/rashidi/backend/backend.sock;
+    }
+
+
+
+
+
+
+
+
+
+    location /media/ {
+    alias /home/rashidi/backend/media/;
+    #   autoindex on; # Optional: to list files in the directory
+    }
+
+    location /static/ {
+        alias /home/rashidi/backend/staticfiles/; # This should match STATIC_ROOT
+        #   autoindex on; # Optional: to list files in the directory
+    }
+}
